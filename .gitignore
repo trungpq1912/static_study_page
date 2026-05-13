@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Node modules (nếu sau này dùng npm)
+node_modules/
+
+# Env
+.env
+
+# Cache
+.cache/
+dist/

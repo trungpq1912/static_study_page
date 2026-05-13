@@ -1,0 +1,31 @@
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:Arial, sans-serif; background:#f4f6fa; color:#1a1a28; min-height:100vh; }
+.container{ max-width:1100px; margin:0 auto; padding:40px 20px; }
+.top-bar{ margin-bottom:24px; }
+.home-btn{ display:inline-flex; align-items:center; justify-content:center; text-decoration:none; background:#2563eb; color:#fff; padding:10px 16px; border-radius:10px; font-size:14px; font-weight:600; transition:0.2s ease; }
+.home-btn:hover{ background:#1d4ed8; }
+.card{ background:white; border-radius:18px; padding:40px; box-shadow:0 4px 14px rgba(0,0,0,0.08); }
+h1{ font-size:32px; color:#1a2540; margin-bottom:16px; }
+.desc{ color:#5f6b84; line-height:1.8; font-size:16px; margin-bottom:30px; }
+.section{ margin-top:30px; padding:24px; border-radius:14px; background:#f8faff; border:1px solid #dbe6ff; }
+.section h2{ color:#1a2540; margin-bottom:12px; font-size:20px; }
+.section p{ color:#5f6b84; line-height:1.7; font-size:14px; }
+.coming{ margin-top:30px; background:#eaf2ff; border:1px dashed #7aa2ff; padding:20px; border-radius:14px; color:#2550a8; font-weight:600; }
+
+/* Dành riêng cho trang Convert2MD */
+.feature-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+.feature-card{ background:#f8faff; border:1px solid #dbe6ff; border-radius:14px; padding:24px; }
+.feature-card h2{ color:#1a2540; margin-bottom:12px; font-size:20px; }
+.feature-card p{ color:#5f6b84; line-height:1.7; font-size:14px; }
+.code-block{ margin-top:28px; background:#1a2540; color:#dbe4ff; padding:20px; border-radius:14px; overflow:auto; font-size:13px; line-height:1.7; }
+
+/* Mobile */
+@media(max-width:768px){
+  .container{ padding:20px 14px; }
+  .card{ padding:24px; }
+  h1{ font-size:24px; }
+  .desc{ font-size:14px; }
+  .section{ padding:18px; }
+  .section h2{ font-size:18px; }
+  .feature-card{ padding:18px; }
+}

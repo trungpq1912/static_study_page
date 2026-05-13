@@ -29,7 +29,7 @@
 
     /* Sidebar */
     .sidebar{
-      width:260px;
+      width:280px;
       background:#1a2540;
       color:white;
       padding:24px 16px;
@@ -49,34 +49,108 @@
       gap:10px;
     }
 
-    .menu a{
-      text-decoration:none;
-      color:#dbe4ff;
-      padding:14px 16px;
-      border-radius:10px;
-      transition:all 0.2s ease;
-      font-size:15px;
-      font-weight:500;
+    /* Parent menu */
+    .menu-group{
+      border-radius:12px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.04);
     }
 
-    .menu a:hover{
-      background:rgba(255,255,255,0.1);
+    .menu-toggle{
+      width:100%;
+      border:none;
+      background:none;
+      color:#ffffff;
+      cursor:pointer;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:14px 16px;
+      font-size:15px;
+      font-weight:600;
+
+      transition:0.2s ease;
+    }
+
+    .menu-toggle:hover{
+      background:rgba(255,255,255,0.08);
+    }
+
+    .toggle-icon{
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    /* Sub menu */
+    .submenu{
+        display:block;
+
+        padding:10px;
+        margin:0 8px 10px;
+        background:rgba(255,255,255,0.10);
+        border:1px solid rgba(255,255,255,0.14);
+        border-radius:12px;
+        backdrop-filter:blur(4px);
+    }
+
+    .submenu a{
+      display:block;
+      text-decoration:none;
+      color:#dbe4ff;
+
+      padding:12px 14px;
+      border-radius:10px;
+
+      font-size:14px;
+      margin-bottom:6px;
+
+      transition:all 0.2s ease;
+    }
+
+    .submenu a:hover{
+      background:rgba(255,255,255,0.08);
       color:white;
       transform:translateX(4px);
     }
 
-    .menu a.active{
-      background:#2563eb;
+    .submenu a.active{
+        background:#3b82f6;
+        color:white;
+
+        box-shadow:
+            0 0 0 1px rgba(255,255,255,0.08),
+            0 4px 10px rgba(37,99,235,0.35);
+    }
+
+    /* Other menu */
+    .menu-link{
+      text-decoration:none;
+      color:#dbe4ff;
+
+      padding:14px 16px;
+      border-radius:10px;
+
+      font-size:15px;
+      font-weight:500;
+
+      transition:all 0.2s ease;
+    }
+
+    .menu-link:hover{
+      background:rgba(255,255,255,0.08);
       color:white;
+      transform:translateX(4px);
     }
 
     /* Content */
     .content{
       flex:1;
-      padding:40px;
       display:flex;
-      align-items:center;
       justify-content:center;
+      align-items:center;
+      padding:40px;
     }
 
     .welcome-card{
@@ -117,18 +191,6 @@
         font-size:20px;
       }
 
-      .menu{
-        flex-direction:row;
-        overflow-x:auto;
-        gap:8px;
-      }
-
-      .menu a{
-        white-space:nowrap;
-        padding:12px 14px;
-        font-size:14px;
-      }
-
       .content{
         padding:20px;
       }
@@ -161,18 +223,57 @@
 
       <nav class="menu">
 
-        <a
-          href="./JP_Study/jp_grammar_v1.html"
-          class="active"
-        >
-          Study Japanese
-        </a>
+        <!-- Study Japanese -->
+        <div class="menu-group">
 
-        <a href="#">
+          <button
+            class="menu-toggle"
+            onclick="toggleJapaneseMenu()"
+          >
+            <span>Study Japanese</span>
+
+            <span
+              class="toggle-icon"
+              id="jpToggleIcon"
+            >
+              −
+            </span>
+          </button>
+
+          <div
+            class="submenu"
+            id="jpSubmenu"
+          >
+
+            <a
+              href="./JP_Study/jp_grammar_v1.html"
+              class="active"
+            >
+              Grammar
+            </a>
+
+            <a
+              href="./JP_Study/jp_kotoba_v1.html"
+            >
+              Kotoba
+            </a>
+
+            <a
+              href="./JP_Study/jp_test_v1.html"
+            >
+              Test
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- Other -->
+        <a href="#" class="menu-link">
           Health
         </a>
 
-        <a href="#">
+        <a href="#" class="menu-link">
           Python
         </a>
 
@@ -197,6 +298,24 @@
     </main>
 
   </div>
+
+  <script>
+
+    function toggleJapaneseMenu(){
+
+      const submenu = document.getElementById("jpSubmenu");
+      const icon = document.getElementById("jpToggleIcon");
+
+      if(submenu.style.display === "none"){
+        submenu.style.display = "block";
+        icon.textContent = "−";
+      }else{
+        submenu.style.display = "none";
+        icon.textContent = "+";
+      }
+    }
+
+  </script>
 
 </body>
 </html>

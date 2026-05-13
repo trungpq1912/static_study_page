@@ -1,60 +1,202 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Static Site Home</title>
+
+  <meta name="theme-color" content="#1a2540">
+
+  <title>Study Portal</title>
 
   <style>
-    body {
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
       font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      padding: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      background:#f4f6fa;
+      color:#1a1a28;
+      min-height:100vh;
     }
 
-    .container {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-      width: 100%;
-      max-width: 500px;
+    .layout{
+      display:flex;
+      min-height:100vh;
     }
 
-    h1 {
-      margin-bottom: 24px;
-      color: #333;
+    /* Sidebar */
+    .sidebar{
+      width:260px;
+      background:#1a2540;
+      color:white;
+      padding:24px 16px;
+      box-shadow:2px 0 10px rgba(0,0,0,0.1);
     }
 
-    a {
-      display: inline-block;
-      padding: 14px 24px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
-      transition: background 0.2s ease;
+    .logo{
+      font-size:22px;
+      font-weight:bold;
+      margin-bottom:32px;
+      letter-spacing:0.5px;
     }
 
-    a:hover {
-      background: #1d4ed8;
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#dbe4ff;
+      padding:14px 16px;
+      border-radius:10px;
+      transition:all 0.2s ease;
+      font-size:15px;
+      font-weight:500;
+    }
+
+    .menu a:hover{
+      background:rgba(255,255,255,0.1);
+      color:white;
+      transform:translateX(4px);
+    }
+
+    .menu a.active{
+      background:#2563eb;
+      color:white;
+    }
+
+    /* Content */
+    .content{
+      flex:1;
+      padding:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .welcome-card{
+      background:white;
+      padding:40px;
+      border-radius:16px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.08);
+      width:100%;
+      max-width:700px;
+    }
+
+    .welcome-card h1{
+      font-size:32px;
+      margin-bottom:16px;
+      color:#1a2540;
+    }
+
+    .welcome-card p{
+      color:#667788;
+      line-height:1.7;
+      font-size:16px;
+    }
+
+    /* Mobile */
+    @media(max-width:768px){
+
+      .layout{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        width:100%;
+        padding:16px;
+      }
+
+      .logo{
+        margin-bottom:18px;
+        font-size:20px;
+      }
+
+      .menu{
+        flex-direction:row;
+        overflow-x:auto;
+        gap:8px;
+      }
+
+      .menu a{
+        white-space:nowrap;
+        padding:12px 14px;
+        font-size:14px;
+      }
+
+      .content{
+        padding:20px;
+      }
+
+      .welcome-card{
+        padding:24px;
+      }
+
+      .welcome-card h1{
+        font-size:24px;
+      }
+
+      .welcome-card p{
+        font-size:14px;
+      }
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Japanese Study Portal</h1>
 
-    <a href="./JP_Study/jp_grammar_v1.html">
-      JP Grammar Study
-    </a>
+<body>
+
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <div class="logo">
+        Study Portal
+      </div>
+
+      <nav class="menu">
+
+        <a
+          href="./JP_Study/jp_grammar_v1.html"
+          class="active"
+        >
+          Study Japanese
+        </a>
+
+        <a href="#">
+          Health
+        </a>
+
+        <a href="#">
+          Python
+        </a>
+
+      </nav>
+
+    </aside>
+
+    <!-- Main content -->
+    <main class="content">
+
+      <div class="welcome-card">
+
+        <h1>Welcome</h1>
+
+        <p>
+          Personal learning portal for Japanese study,
+          health knowledge, and Python development.
+        </p>
+
+      </div>
+
+    </main>
+
   </div>
+
 </body>
 </html>

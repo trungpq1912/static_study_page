@@ -165,6 +165,193 @@ body{font-family:var(--ui);background:var(--bg);color:var(--text);font-size:14px
   transition:transform 0.1s;
 }
 .print-btn:hover{transform:translateY(-1px)}
+/* ══════════════════════════════════════════
+   MOBILE RESPONSIVE
+══════════════════════════════════════════ */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+
+  body{
+    font-size:13px;
+    line-height:1.45;
+  }
+
+  /* Header */
+  .app-header{
+    padding:12px 12px 0;
+  }
+
+  .app-title{
+    font-size:14px;
+    line-height:1.4;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:4px;
+  }
+
+  .app-title small{
+    font-size:10px;
+    line-height:1.4;
+  }
+
+  /* Tabs */
+  .tab-bar{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:2px;
+  }
+
+  .tab-btn{
+    font-size:11px;
+    padding:10px 12px;
+    min-height:44px;
+    flex-shrink:0;
+  }
+
+  .tab-count{
+    font-size:9px;
+  }
+
+  /* Panel */
+  .tab-panel{
+    padding:12px;
+  }
+
+  .panel-intro{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+    padding:12px;
+  }
+
+  .panel-intro-title{
+    font-size:14px;
+  }
+
+  .panel-intro-desc{
+    font-size:11px;
+  }
+
+  .panel-intro-count{
+    margin-left:0;
+    width:100%;
+  }
+
+  /* Section header */
+  .sh{
+    font-size:10px;
+    line-height:1.4;
+    padding:8px 10px;
+    flex-wrap:wrap;
+  }
+
+  /* TABLE RESPONSIVE */
+  .gt{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    border-radius:8px;
+  }
+
+  .gt table{
+    min-width:900px;
+  }
+
+  .gt th{
+    font-size:10px;
+    padding:8px;
+  }
+
+  .gt td{
+    font-size:11px;
+    padding:8px;
+    vertical-align:top;
+  }
+
+  .pat{
+    font-size:12px;
+  }
+
+  .conj{
+    font-size:10px;
+  }
+
+  .mean{
+    font-size:11px;
+  }
+
+  .ex-jp{
+    font-size:11px;
+    line-height:1.6;
+  }
+
+  .ex-vn{
+    font-size:10px;
+  }
+
+  .note{
+    font-size:10px;
+    line-height:1.5;
+  }
+
+  .note .diff,
+  .note .warn{
+    font-size:9px;
+  }
+
+  .lv{
+    font-size:8px;
+    padding:1px 4px;
+  }
+
+  /* Print button */
+  .print-btn{
+    right:12px;
+    bottom:12px;
+    padding:10px 14px;
+    font-size:12px;
+  }
+}
+
+/* Small phones */
+@media screen and (max-width: 480px){
+
+  .app-title{
+    font-size:13px;
+  }
+
+  .tab-btn{
+    padding:9px 10px;
+    font-size:10px;
+  }
+
+  .tab-panel{
+    padding:10px;
+  }
+
+  .panel-intro{
+    padding:10px;
+  }
+
+  .gt td{
+    padding:7px;
+  }
+
+  .gt th{
+    padding:7px;
+  }
+}
 </style>
 </head>
 <body>

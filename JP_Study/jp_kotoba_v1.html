@@ -21,14 +21,17 @@ thead th:last-child, tbody td:last-child { width: 32px; padding: 6px 8px; }
 </head>
 <body>
 <div class="container">
-  <div class="top-bar">
+  <div class="top-bar" style="display:flex;align-items:center;gap:10px">
     <a onclick="history.back(); return false;" href="../index.html" class="home-btn">HOMEへ</a>
+    <button id="headerCollapseBtn" onclick="toggleKotobaHeader()" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:2px solid #dbe6ff;background:white;color:#5f6b84;font-size:16px;font-weight:700;cursor:pointer;transition:0.15s;flex-shrink:0" title="Ẩn/hiện tiêu đề">－</button>
   </div>
   <div class="card">
+    <div id="kotobaHeaderBody">
     <h1>言葉 — Từ vựng tiếng Nhật</h1>
     <p class="desc">Học từ vựng theo chủ đề. Quiz phiên âm random mỗi lần mở. Từ mới & xoá đồng bộ lên <strong>Cloudflare KV</strong> — tất cả mọi người đều thấy.</p>
     <div class="config-banner" id="configBanner">
       ⚠️ <strong>Chưa cấu hình Worker URL.</strong> Mở file, tìm <code>const WORKER_URL</code> và điền URL Worker vào.
+    </div>
     </div>
     <div class="cat-bar" id="catBar">
       <div class="skeleton" style="width:90px;height:38px;border-radius:24px;"></div>
@@ -1090,6 +1093,39 @@ async function init() {
   }
 }
 init();
+</script>
+
+<script>
+// ── Kotoba header collapse ──────────────────────────────────
+function toggleKotobaHeader() {
+  const ids  = ["kotobaHeaderBody", "catBar"];   // ← thêm "catBar" vào đây
+  const btn  = document.getElementById("headerCollapseBtn");
+  const open = document.getElementById("kotobaHeaderBody").style.display !== "none";
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = open ? "none" : "";
+  });
+  btn.textContent    = open ? "＋" : "－";
+  btn.style.borderColor = open ? "#2563eb" : "#dbe6ff";
+  btn.style.color       = open ? "#2563eb" : "#5f6b84";
+  try { localStorage.setItem("kotoba_header_open", open ? "0" : "1"); } catch(e) {}
+}
+
+// Restore on load
+(function() {
+  try {
+    if (localStorage.getItem("kotoba_header_open") === "0") {
+      ["kotobaHeaderBody", "catBar"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+      });
+      const btn = document.getElementById("headerCollapseBtn");
+      btn.textContent       = "＋";
+      btn.style.borderColor = "#2563eb";
+      btn.style.color       = "#2563eb";
+    }
+  } catch(e) {}
+})();
 </script>
 </body>
 </html>

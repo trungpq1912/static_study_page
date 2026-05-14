@@ -15,8 +15,9 @@
 <div class="app-header">
   <div class="app-title">
     <a href="../index.html" class="home-link">HOMEへ</a>
+    <button id="grammarCollapseBtn" onclick="toggleGrammarHeader()" title="Ẩn/hiện tabs" style="background:none;border:1px solid rgba(255,255,255,0.25);color:#8a9ab8;border-radius:6px;width:26px;height:26px;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:0.15s;margin-left:2px;flex-shrink:0">－</button>
     日本語文法 完全まとめ
-    <small>Tổng hợp Ngữ pháp N5→N1 + 敬語 + IT · 540+ mẫu · 12 nhóm</small>
+    <small id="grammarSubtitle">Tổng hợp Ngữ pháp N5→N1 + 敬語 + IT · 540+ mẫu · 12 nhóm</small>
   </div>
   <div class="tab-bar" id="tabBar">
     <button class="tab-btn active" onclick="showTab('n5',this)"><span class="tab-dot" style="background:var(--n5br)"></span>N5 <span class="tab-count">70</span></button>
@@ -1048,6 +1049,39 @@ function showTab(id, btn) {
   document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
 }
+
+function toggleGrammarHeader() {
+  const tabBar   = document.getElementById("tabBar");
+  const subtitle = document.getElementById("grammarSubtitle");
+  const btn      = document.getElementById("grammarCollapseBtn");
+  // ← thêm: ẩn tất cả panel-intro (card mô tả trong mỗi tab)
+  const intros   = document.querySelectorAll(".panel-intro");
+  const open     = tabBar.style.display !== "none";
+
+  tabBar.style.display   = open ? "none" : "";
+  subtitle.style.display = open ? "none" : "";
+  intros.forEach(el => el.style.display = open ? "none" : "");
+
+  btn.textContent       = open ? "＋" : "－";
+  btn.style.borderColor = open ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.25)";
+  btn.style.color       = open ? "#fff" : "#8a9ab8";
+  try { localStorage.setItem("grammar_header_open", open ? "0" : "1"); } catch(e) {}
+}
+
+(function() {
+  try {
+    if (localStorage.getItem("grammar_header_open") === "0") {
+      document.getElementById("tabBar").style.display          = "none";
+      document.getElementById("grammarSubtitle").style.display = "none";
+      // ← restore panel-intro ẩn luôn
+      document.querySelectorAll(".panel-intro").forEach(el => el.style.display = "none");
+      const btn = document.getElementById("grammarCollapseBtn");
+      btn.textContent       = "＋";
+      btn.style.borderColor = "rgba(255,255,255,0.5)";
+      btn.style.color       = "#fff";
+    }
+  } catch(e) {}
+})();
 </script>
 
 <button class="print-btn no-print" onclick="window.print()">🖨️ In / Xuất PDF</button>

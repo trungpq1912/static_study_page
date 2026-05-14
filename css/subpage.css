@@ -21,8 +21,8 @@ h1{ font-size:32px; color:#1a2540; margin-bottom:16px; }
 
 /* Mobile */
 @media(max-width:768px){
-  .container{ padding:20px 14px; }
-  .card{ padding:24px; }
+  .container{ padding:12px 10px; }
+  .card{ padding:18px 14px; }
   h1{ font-size:24px; }
   .desc{ font-size:14px; }
   .section{ padding:18px; }

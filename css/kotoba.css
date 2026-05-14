@@ -293,12 +293,96 @@ td.note    { color: #9ca3af; font-size: 12px; font-style: italic; }
   animation: pulse 1.5s infinite;
 }
 
-/* ── Mobile ────────────────────────────────────────── */
-@media (max-width: 768px) {
+/* ── Tablet ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* Ẩn cột Ghi chú trên tablet */
   thead th:nth-child(5),
+  tbody td:nth-child(5) { display: none; }
+}
+
+/* ── Mobile ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Ẩn thêm cột × (delete) */
   thead th:nth-child(6),
-  tbody td:nth-child(5),
   tbody td:nth-child(6) { display: none; }
 
-  .toolbar { flex-direction: column; align-items: flex-start; }
+  /* Cat bar: scroll ngang thay vì wrap xuống dòng */
+  .cat-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    gap: 8px;
+    /* ẩn scrollbar nhưng vẫn scroll được */
+    scrollbar-width: none;
+  }
+  .cat-bar::-webkit-scrollbar { display: none; }
+
+  /* Cat button nhỏ hơn để fit ngang */
+  .cat-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .cat-btn .badge { font-size: 10px; padding: 1px 5px; }
+
+  /* Toolbar stack dọc, full width */
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .toolbar-left {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .btn-add,
+  .btn-quiz-toggle {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /* Table: cell nhỏ lại */
+  tbody td     { padding: 10px 10px; font-size: 13px; }
+  thead th     { padding: 10px 10px; font-size: 12px; }
+  td.kanji     { font-size: 13px; }
+  td.reading   { font-size: 13px; }
+
+  /* Quiz options: wrap tốt hơn */
+  .quiz-options { gap: 5px; }
+  .quiz-opt     { padding: 5px 9px; font-size: 12px; }
+
+  /* Pagination nhỏ lại */
+  .page-btn { width: 32px; height: 32px; font-size: 12px; }
+}
+
+/* ── Small phones (≤480px) ──────────────────────────── */
+@media (max-width: 480px) {
+  /* Chỉ còn # | 漢字 | Quiz | Nghĩa — bỏ hết còn lại */
+  thead th:nth-child(1),
+  tbody td:nth-child(1) { width: 28px; padding: 8px 6px; }
+
+  tbody td { padding: 9px 8px; }
+  thead th { padding: 9px 8px; }
+
+  /* Quiz options xuống dòng từng cái */
+  .quiz-options { flex-direction: column; gap: 4px; }
+  .quiz-opt     { width: 100%; text-align: center; }
+
+  /* Modal full screen */
+  .modal {
+    padding: 24px 20px;
+    border-radius: 14px 14px 0 0;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    max-width: 100%;
+    margin: 0;
+    animation: slideUp 0.25s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
 }
